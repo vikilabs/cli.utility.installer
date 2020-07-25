@@ -17,12 +17,16 @@
 	
 	<utility_name> : utility to install
 
+
 #### SYNTAX - uninstaller
 
   
 	./uninstaller.sh <utility_name>
 	
 	<utility_name> : utility to uninstall
+
+
+Alternatively you can feed the utility name in util.txt file instead of passing as arguments.
 
 ## Tested Linux Based Systems
 
