@@ -60,14 +60,17 @@ is_file_exist(){
     fi
 }
 
-if [ $# -lt 1 ]; then
-    echo
-    echo "$ERROR_STR usage "
-    usage
-    exit 1
+if [ -z "$UTILITY_NAME" ]; then
+    if [ $# -lt 1 ]; then
+    	echo
+    	echo "$ERROR_STR usage "
+    	usage
+    	exit 1
+    fi
+    
+    UTILITY_NAME="$1"
 fi
 
-UTILITY_NAME="$1"
 is_file_exist $UTILITY_NAME
 get_installation_directory
 install_package

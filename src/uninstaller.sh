@@ -20,7 +20,7 @@ get_installation_directory(){
 
     if [ ! -z "$mac_system" ]; then
         echo "$STATUS_STR MacOS System"
-        INSTALL_DIR="/opt/local/bin/"
+        INSTALL_DIR="/opt/local/bin"
     fi
 }
 
@@ -58,12 +58,17 @@ is_file_exist(){
     fi
 }
 
-if [ $# -lt 1 ]; then
-    echo
-    echo "$ERROR_STR usage "
-    usage
-    exit 1
+if [ -z "$UTILITY_NAME" ]; then
+    if [ $# -lt 1 ]; then
+    	echo
+    	echo "$ERROR_STR usage "
+    	usage
+    	exit 1
+    fi
+    
+    UTILITY_NAME="$1"
 fi
+
 
 UTILITY_NAME="$1"
 get_installation_directory
