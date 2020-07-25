@@ -3,6 +3,7 @@
 INSTALL_DIR="/usr/bin"
 UTILITY_NAME=""
 
+UTILITY_NAME_FILE="./util.txt"
  STATUS_STR="[ status    ]"
 SUCCESS_STR="[ success   ]"
 FAILURE_STR="[ failure   ]"
@@ -58,6 +59,14 @@ is_file_exist(){
     fi
 }
 
+#Read utility name from util.txt 
+if [ $# -lt 1 ]; then
+    if [ -f $UTILITY_NAME_FILE ]; then
+    	UTILITY_NAME="`cat $UTILITY_NAME_FILE`"	
+    fi
+fi
+
+#Read utility name from arguments 
 if [ -z "$UTILITY_NAME" ]; then
     if [ $# -lt 1 ]; then
     	echo
@@ -69,8 +78,6 @@ if [ -z "$UTILITY_NAME" ]; then
     UTILITY_NAME="$1"
 fi
 
-
-UTILITY_NAME="$1"
 get_installation_directory
 is_file_exist $INSTALL_DIR/$UTILITY_NAME
 uninstall_package
